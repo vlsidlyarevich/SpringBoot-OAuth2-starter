@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@RequestMapping("/api/signup")
+@RequestMapping("/api/v1/signup")
 public class SignUpController {
 
     private final UserService service;
