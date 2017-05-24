@@ -25,8 +25,12 @@ import javax.servlet.Filter;
 @EnableOAuth2Client
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
+    private final OAuth2ClientContext oauth2ClientContext;
+
     @Autowired
-    private OAuth2ClientContext oauth2ClientContext;
+    public SecurityConfig(final OAuth2ClientContext oauth2ClientContext) {
+        this.oauth2ClientContext = oauth2ClientContext;
+    }
 
     @Override
     protected void configure(final HttpSecurity http) throws Exception {
@@ -43,25 +47,34 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .csrf()
                 .csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
-                .and().addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
+                .and()
+                .addFilterBefore(ssoFilter(), BasicAuthenticationFilter.class);
     }
 
     private Filter ssoFilter() {
-        OAuth2ClientAuthenticationProcessingFilter facebookFilter = new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
+        OAuth2ClientAuthenticationProcessingFilter facebookFilter
+                = new OAuth2ClientAuthenticationProcessingFilter("/login/facebook");
+
         OAuth2RestTemplate facebookTemplate = new OAuth2RestTemplate(facebook(), oauth2ClientContext);
         facebookFilter.setRestTemplate(facebookTemplate);
+
         UserInfoTokenServices tokenServices = new UserInfoTokenServices(facebookResource().getUserInfoUri(), facebook().getClientId());
         tokenServices.setRestTemplate(facebookTemplate);
+
         facebookFilter.setTokenServices(tokenServices);
+
         return facebookFilter;
     }
 
     @Bean
     public FilterRegistrationBean oauth2ClientFilterRegistration(
-            OAuth2ClientContextFilter filter) {
+            final OAuth2ClientContextFilter filter) {
+        final int order = -100;
+
         FilterRegistrationBean registration = new FilterRegistrationBean();
         registration.setFilter(filter);
-        registration.setOrder(-100);
+        registration.setOrder(order);
+
         return registration;
     }
 
