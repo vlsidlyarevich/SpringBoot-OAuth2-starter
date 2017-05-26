@@ -21,7 +21,7 @@ public class SecuredController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public ResponseEntity<?> sayHello() {
+    public ResponseEntity<?> getUser() {
         return new ResponseEntity<>(facade.getAuthentication(), HttpStatus.OK);
     }
 }
