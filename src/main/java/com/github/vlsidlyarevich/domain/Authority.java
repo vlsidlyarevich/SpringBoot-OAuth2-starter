@@ -1,7 +1,6 @@
-package com.github.vlsidlyarevich.model;
+package com.github.vlsidlyarevich.domain;
 
 import org.springframework.security.core.GrantedAuthority;
-
 
 public enum Authority implements GrantedAuthority {
     ROLE_USER,

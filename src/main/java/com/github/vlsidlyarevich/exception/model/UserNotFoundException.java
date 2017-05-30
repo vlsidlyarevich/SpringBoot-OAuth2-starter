@@ -1,6 +1,5 @@
 package com.github.vlsidlyarevich.exception.model;
 
-
 public class UserNotFoundException extends RuntimeException {
 
     private static final long serialVersionUID = 2967357473314163159L;

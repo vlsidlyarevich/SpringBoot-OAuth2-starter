@@ -1,10 +1,9 @@
-package com.github.vlsidlyarevich.model;
+package com.github.vlsidlyarevich.domain;
 
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.GrantedAuthority;
 
 import java.util.Collection;
-
 
 public class UserAuthentication implements Authentication {
 

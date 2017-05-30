@@ -1,6 +1,5 @@
 package com.github.vlsidlyarevich.exception.model;
 
-
 public class ServiceException extends RuntimeException {
 
     private static final long serialVersionUID = -8658131859261427602L;

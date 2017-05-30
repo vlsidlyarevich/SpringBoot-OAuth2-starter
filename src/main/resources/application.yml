@@ -10,8 +10,5 @@ server:
 
 security:
   oauth2:
-    client:
-      client-id: spring-boot-oauth2-starter
-      client-secret: secret
-      scope: read,write
-      auto-approve-scopes: '.*'
+    resource:
+      filter-order: 3

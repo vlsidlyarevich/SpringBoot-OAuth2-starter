@@ -1,13 +1,12 @@
 package com.github.vlsidlyarevich.converter.dto;
 
 import com.github.vlsidlyarevich.dto.UserDTO;
-import com.github.vlsidlyarevich.model.Authority;
-import com.github.vlsidlyarevich.model.User;
+import com.github.vlsidlyarevich.domain.Authority;
+import com.github.vlsidlyarevich.domain.User;
 import org.springframework.core.convert.converter.Converter;
 
 import java.util.ArrayList;
 import java.util.List;
-
 
 public class UserDTOConverter implements Converter<UserDTO, User> {
 

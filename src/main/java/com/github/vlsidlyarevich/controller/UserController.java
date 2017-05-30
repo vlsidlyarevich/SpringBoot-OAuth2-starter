@@ -8,15 +8,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
 @RequestMapping("/api/v1/user")
-public class SecuredController {
+public class UserController {
 
     private final SecurityContextAuthenticationFacade facade;
 
     @Autowired
-    public SecuredController(final SecurityContextAuthenticationFacade facade) {
+    public UserController(final SecurityContextAuthenticationFacade facade) {
         this.facade = facade;
     }
 

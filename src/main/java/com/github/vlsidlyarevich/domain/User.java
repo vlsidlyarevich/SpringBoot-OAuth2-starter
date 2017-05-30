@@ -1,16 +1,20 @@
-package com.github.vlsidlyarevich.model;
+package com.github.vlsidlyarevich.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.List;
 
-
-public class User extends BaseEntity implements UserDetails {
+@Document(collection = "users")
+public class User extends DbModel implements UserDetails {
 
     private static final long serialVersionUID = 7954325925563724664L;
 
+    @Id
+    private String id;
     private List<Authority> authorities;
     private String username;
     private String password;
@@ -52,6 +56,14 @@ public class User extends BaseEntity implements UserDetails {
     @Override
     public boolean isEnabled() {
         return isEnabled;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(final String id) {
+        this.id = id;
     }
 
     public void setAuthorities(final List<Authority> authorities) {

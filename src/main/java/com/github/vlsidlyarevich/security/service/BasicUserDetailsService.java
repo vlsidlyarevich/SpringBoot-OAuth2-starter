@@ -1,13 +1,12 @@
 package com.github.vlsidlyarevich.security.service;
 
-import com.github.vlsidlyarevich.model.User;
+import com.github.vlsidlyarevich.domain.User;
 import com.github.vlsidlyarevich.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-
 
 @Service
 public class BasicUserDetailsService implements UserDetailsService {
